@@ -35,9 +35,9 @@ load_dotenv()
 BOT_TOKEN_HELPDESK = os.environ.get('BOT_TOKEN')
 LOGIN, MANU,CONFIRMATION,MEALS,BREADS,SALADS = range(6)
 manu_keyboard = [['Buyurtma berish']]
-BREAD_CATEGORY =2
+BREAD_CATEGORY =3
 MEAL_CATEGORY = 1
-SALAD_CATEGORY = 3
+SALAD_CATEGORY = 2
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
