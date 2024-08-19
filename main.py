@@ -187,6 +187,7 @@ async def confirmation(update: Update, context: ContextTypes.DEFAULT_TYPE) -> in
         }
         order = create_order(data)
         await update.message.reply_text('Ваша заявка принята☑️', reply_markup=ReplyKeyboardMarkup(manu_keyboard, resize_keyboard=True ))
+        return MANU
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Cancels and ends the conversation."""
