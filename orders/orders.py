@@ -25,3 +25,13 @@ def get_department(password):
 def create_order(data):
     response = requests.post(f"{BASE_URL}/api/v1/orders", headers={"Authorization": f"Bearer {BACKEND_TOKEN}"}, json=data)
     return response.json()
+
+
+def logout_reqeust(data):
+    response = requests.put(f"{BASE_URL}/api/v1/clients/logout",headers={"Authorization": f"Bearer {BACKEND_TOKEN}"},  json=data)
+    return response.json()
+
+
+def client_update(data):
+    response = requests.put(f"{BASE_URL}/api/v1/clients", headers={"Authorization": f"Bearer {BACKEND_TOKEN}"},  json=data)
+    return response.json()
