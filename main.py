@@ -58,7 +58,6 @@ async def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Stores the selected"""
     department = get_department(update.message.text)
     if department['items']:
-        print(department)
         context.user_data['department_id'] = department['items'][0]['id']
         current_branch = department['items'][0]['name']
         current_client = get_user(update.message.from_user.id)
@@ -78,7 +77,6 @@ async def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
                 "username": update.message.from_user.username
             }
             cleint_creation = create_client(data)
-            print(client_update)
             context.user_data['client_id'] = cleint_creation['id']
         await update.message.reply_text( f"Вы успешно вошли в программу, ваш филиал -- {current_branch}", reply_markup=ReplyKeyboardMarkup(manu_keyboard, resize_keyboard=True))
         return MANU
