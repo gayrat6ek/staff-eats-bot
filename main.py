@@ -75,9 +75,9 @@ async def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
                 "department_id": context.user_data['department_id'],
                 "name": update.message.from_user.first_name,
                 "username": update.message.from_user.username
-
             }
             cleint_creation = create_client(data)
+            print(client_update)
             context.user_data['client_id'] = cleint_creation['id']
         await update.message.reply_text( f"Вы успешно вошли в программу, ваш филиал -- {current_branch}", reply_markup=ReplyKeyboardMarkup(manu_keyboard, resize_keyboard=True))
         return MANU
