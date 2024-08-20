@@ -58,6 +58,7 @@ async def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Stores the selected"""
     department = get_department(update.message.text)
     if department['items']:
+        print(department)
         context.user_data['department_id'] = department['items'][0]['id']
         current_branch = department['items'][0]['name']
         current_client = get_user(update.message.from_user.id)
