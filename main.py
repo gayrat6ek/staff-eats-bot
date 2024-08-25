@@ -27,6 +27,8 @@ from telegram.ext import (
     PicklePersistence
 )
 
+from datetime import datetime,date
+import pytz
 
 from dotenv import load_dotenv
 import os
@@ -38,6 +40,9 @@ manu_keyboard = [['Подать заявку 🥘','Настройки ⚙️']]
 BREAD_CATEGORY =3
 MEAL_CATEGORY = 1
 SALAD_CATEGORY = 2
+
+timezonetash = pytz.timezone('Asia/Tashkent')
+
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -97,6 +102,13 @@ async  def logout(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     return MANU
 
 async def manu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    current_time = datetime.now(timezonetash)
+    if current_time.hour >= 17:
+        await update.message.reply_text('Время подачи заявки истекло⏰', reply_markup=ReplyKeyboardMarkup(manu_keyboard, resize_keyboard=True))
+        return MANU
+    elif current_time.hour < 7:
+        await update.message.reply_text('Время подачи заявки еще не наступило⏰', reply_markup=ReplyKeyboardMarkup(manu_keyboard, resize_keyboard=True))
+        return MANU
 
     if update.message.text == 'Подать заявку 🥘':
         await update.message.reply_text('🍛Напишите количество порции еды (число):', reply_markup=ReplyKeyboardMarkup([['⬅️ Назад']],resize_keyboard=True))
