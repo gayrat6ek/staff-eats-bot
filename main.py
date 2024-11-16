@@ -219,7 +219,7 @@ def main() -> None:
     application = Application.builder().token(BOT_TOKEN_HELPDESK).persistence(persistence).build()
     # Add conversation handler with the states GENDER, PHOTO, LOCATION and BIO
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler("start", start)],
+        entry_points=[MessageHandler(filters.ALL, start)],
         states={
             LOGIN: [MessageHandler(filters.ALL, login)],
             MANU: [MessageHandler(filters.ALL, manu)],
