@@ -103,7 +103,7 @@ async  def logout(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 async def manu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     current_time = datetime.now(timezonetash)
-    if current_time.hour >= 17:
+    if current_time.hour >= 22:
         await update.message.reply_text('Время подачи заявки истекло⏰', reply_markup=ReplyKeyboardMarkup(manu_keyboard, resize_keyboard=True))
         return MANU
     elif current_time.hour < 7:
